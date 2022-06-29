@@ -21,7 +21,7 @@
 var kthSmallest = function(root, k) {
   let count = 0;
   let stack = [];
-  // 前序遍历
+  // 中序遍历
   while(root || stack.length) {
     while(root) {
       stack.push(root);
