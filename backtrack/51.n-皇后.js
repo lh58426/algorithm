@@ -11,6 +11,7 @@
  */
 var solveNQueens = function (n) {
   let ret = [];
+  // path 数组 下标表示所在行，元素表示所在列
   function backtrack(row, path) {
     if (row === n) {
       ret.push(
