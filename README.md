@@ -11,7 +11,7 @@
 
 ### binary search
 
-有序的数组里 找一个数字，如果整体复杂度高，可以考虑先排序
+<!-- 有序的数组里 找一个数字，如果整体复杂度高，可以考虑先排序
 
 ```javascript
 let left = 0;
@@ -41,7 +41,18 @@ while (left < right) {
 
 搜索一个元素的时候，通常 `<= mid` 需要 `+-1`
 
-搜索便捷的时候，`left < right`，`left = mid + 1`, `mid`，
+搜索便捷的时候，`left < right`，`left = mid + 1`, `mid` -->
+
+做二分题目时，可以按照以下步骤：
+
+- 写出循环条件：`while (left < right)`，注意是 `left < right`，而非 `left <= right`；
+- 循环体内，先写出 `mid = (left + right) >> 1`；
+- 根据具体题目，实现 `check()` 函数（有时很简单的逻辑，可以不定义 `check`），想一下究竟要用 `right = mid`（模板 1） 还是 `left = mid`（模板 2）；
+  如果 `right = mid`，那么写出 else 语句 `left = mid + 1`，并且不需要更改 mid 的计算，即保持 `mid = (left + right) >> 1`；
+  如果 `left = mid`，那么写出 else 语句 `right = mid - 1`，并且在 mid 计算时补充 `+1`，即 `mid = (left + right + 1) >> 1`。
+- 循环结束时，left 与 right 相等。
+
+注意，这两个模板的优点是始终保持答案位于二分区间内，二分结束条件对应的值恰好在答案所处的位置。 对于可能无解的情况，只要判断二分结束后的 left 或者 right 是否满足题意即可。
 
 ### sliding window
 
