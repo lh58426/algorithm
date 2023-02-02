@@ -8,4 +8,4 @@
 - 从根节点到某一节点，路径上经过的字符连接起来，为该节点对应的字符串。
 - 每个节点的所有子节点包含的字符都不相同。
 
-## [Trie 树路由匹配](https://github.com/divasatanica/auf/blob/main/packages/core/src/router/prefix-tree/index.ts)
+> [Trie 树路由匹配](https://github.com/divasatanica/auf/blob/main/packages/core/src/router/prefix-tree/index.ts)
