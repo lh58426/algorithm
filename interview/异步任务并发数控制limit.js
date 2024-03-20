@@ -61,3 +61,21 @@ async function start() {
 start();
 
 // 如果任务有优先级呢
+
+async function asyncPool({
+  limit,
+  items,
+  fn
+}) {
+  const tasks = [];
+  const pool = new Set();
+  for (const item of items) {
+    const task = fn(item);
+    tasks.push(task);
+    pool.add(task);
+    const clean = () => pool.delete(task);
+    task.then(clean, clean);
+    if (pool.size >= limit) await Promise.race(pool);
+  }
+  return Promise.all(tasks);
+}
